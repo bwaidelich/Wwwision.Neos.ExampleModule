@@ -1,0 +1,14 @@
+.neos .filter {
+  background: #323232;
+  border: 1px solid #3f3f3f;
+  border-radius: 3px;
+  padding: 1.5em 0;
+  margin-bottom: 2em;
+}
+.neos .filter input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+.neos .filter .filter-submit {
+  margin-right: 2em;
+  text-align: right;
+}

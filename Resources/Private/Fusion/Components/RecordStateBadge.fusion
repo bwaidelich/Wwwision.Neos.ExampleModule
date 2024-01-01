@@ -1,0 +1,7 @@
+prototype(Wwwision.Neos.ExampleModule:RecordStateBadge) < prototype(Neos.Fusion:Component) {
+    state = null
+    renderer = NeosBE:Badge {
+        errorLevel = ${props.state.value == 'active' ? 1 : 3}
+        content = ${props.state.value == 'active' ? '✔' : '✗'}
+    }
+}

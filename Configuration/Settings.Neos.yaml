@@ -1,0 +1,18 @@
+Neos:
+  Neos:
+    modules:
+      'administration':
+        submodules:
+          'example':
+            label: 'Example Backend module'
+            controller: 'Wwwision\Neos\ExampleModule\Controller\ExampleModuleController'
+            description: 'Modul für die Verwaltung von SAL Konfigurationen'
+            icon: 'fas fa-magic'
+            additionalResources:
+              styleSheets:
+                - 'resource://Wwwision.Neos.ModuleComponents/Public/Styles/module.css'
+                - 'resource://Wwwision.Neos.ExampleModule/Public/Styles/module.css'
+              javaScripts:
+                - 'resource://Wwwision.Neos.ModuleComponents/Public/Scripts/module.js'
+#                - 'resource://Wwwision.Neos.ExampleModule/Public/Scripts/timeago.min.js'
+#                - 'resource://Wwwision.Neos.ExampleModule/Public/Scripts/module.js'

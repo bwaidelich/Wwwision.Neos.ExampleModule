@@ -1,0 +1,17 @@
+prototype(Wwwision.Neos.ExampleModule:Timestamp) < prototype(Neos.Fusion:Component) {
+    dateTime = null
+    renderer = Neos.Fusion:Case {
+        timestamp {
+            condition = ${props.dateTime != null}
+            renderer = afx`
+                <span>
+                    <NeosBE:RelativeTime dateTime={props.dateTime} options.numeric="always" /> ({Date.format(props.dateTime, 'd.m.Y')})
+                </span>
+            `
+        }
+        fallback {
+            condition = true
+            renderer = '-'
+        }
+    }
+}

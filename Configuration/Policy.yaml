@@ -1,0 +1,13 @@
+privilegeTargets:
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    # Define a privilege for the "Example Module" on the basis of its module path (see Settings.Neos.yaml)
+    'Wwwision.Neos.ExampleModule:ExampleModule':
+      matcher: 'administration/example'
+
+roles:
+  'Neos.Neos:Administrator':
+    privileges:
+      # Grant administrators access to the "Example Module"
+      # In custom implementations it might make sense to add a dedicated role for this and/or to leave privilege allocations completely out of the module package itself (so that it can be done in the integration, e.g. the site package)
+      - privilegeTarget: 'Wwwision.Neos.ExampleModule:ExampleModule'
+        permission: GRANT

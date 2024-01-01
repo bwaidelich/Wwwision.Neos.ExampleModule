@@ -1,0 +1,66 @@
+Wwwision.Neos.ExampleModule.ExampleModuleController.showRecord = NeosBE:Module {
+    translateContent = true
+    content = afx`
+        <NeosBE:Table>
+            <NeosBE:Table.Body>
+                <NeosBE:Table.Row>
+                    <NeosBE:Table.Cell attributes.style="width: 20%">ID</NeosBE:Table.Cell>
+                    <NeosBE:Table.Cell attributes.colspan="2">{record.id.value}</NeosBE:Table.Cell>
+                </NeosBE:Table.Row>
+                <NeosBE:Table.Row>
+                    <NeosBE:Table.Cell>LLL:record.title</NeosBE:Table.Cell>
+                    <NeosBE:Table.Cell>{record.title.value}</NeosBE:Table.Cell>
+                    <NeosBE:Table.ActionCell>
+                        <NeosBE:Button icon="edit" modal="modal-rename-record"/>
+                    </NeosBE:Table.ActionCell>
+                </NeosBE:Table.Row>
+                <NeosBE:Table.Row>
+                    <NeosBE:Table.Cell>LLL:record.state</NeosBE:Table.Cell>
+                    <NeosBE:Table.Cell>
+                        <NeosBE:Translate id={'record.state' + record.state.value}/>
+                        <Wwwision.Neos.ExampleModule:RecordStateBadge state={record.state}/>
+                    </NeosBE:Table.Cell>
+                    <NeosBE:Table.ActionCell>
+                        <Neos.Fusion.Form:Form form.method="POST" form.target.action={record.disabled ? "enableRecord": "disableRecord"} form.target.arguments={{id: record.id.value}}>
+                            <NeosBE:Button icon="power-off"/>
+                        </Neos.Fusion.Form:Form>
+                    </NeosBE:Table.ActionCell>
+                </NeosBE:Table.Row>
+                <NeosBE:Table.FolderRow>
+                    <NeosBE:Table.Cell attributes.colspan="2">LLL:details</NeosBE:Table.Cell>
+                    <NeosBE:Table.ActionCell>
+                        <NeosBE:ToggleButton target="hidden" />
+                    </NeosBE:Table.ActionCell>
+                </NeosBE:Table.FolderRow>
+                <NeosBE:Table.CollapsedRow id="hidden">
+                    <NeosBE:Table.Cell attributes.colspan="3">
+                        <h2>More details</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br />At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.<br /><br /></p>
+                    </NeosBE:Table.Cell>
+                </NeosBE:Table.CollapsedRow>
+                <NeosBE:Table.Row>
+                    <NeosBE:Table.Cell>LLL:record.creationDate</NeosBE:Table.Cell>
+                    <NeosBE:Table.Cell attributes.colspan="2">
+                        <Wwwision.Neos.ExampleModule:Timestamp dateTime={record.creationDate.dateTime}/>
+                    </NeosBE:Table.Cell>
+                </NeosBE:Table.Row>
+            </NeosBE:Table.Body>
+        </NeosBE:Table>
+
+        <NeosBE:ModalForm id="modal-delete-record" header="LLL:deleteRecord" cancelButtonText="LLL:cancel" submitButtonIcon="trash" submitButtonText="LLL:deleteRecord" isDangerous={true} form.target.action="deleteRecord" form.target.arguments={{id: record.id.value}}>
+            <NeosBE:Translate id="confirm.deleteRecord" arguments={[record.title.value]} /><br />
+        </NeosBE:ModalForm>
+
+        <NeosBE:ModalForm id="modal-rename-record" header="LLL:deleteRecord" cancelButtonText="LLL:cancel" submitButtonIcon="save" submitButtonText="LLL:deleteRecord" form.target.action="renameRecord" form.target.arguments={{id: record.id.value}} form.data.record={record}>
+            <p>LLL:deleteRecord "{record.title.value}"</p>
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="form[newTitle]" field.value={record.title.value} label="New title:">
+                <Neos.Fusion.Form:Input attributes.class="neos-span12" attributes.required={true}/>
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+        </NeosBE:ModalForm>
+    `
+
+    footer = afx`
+        <NeosBE:Button content="Back" icon="arrow-left" action="index"/>
+        <NeosBE:Button content="LLL:deleteRecord" icon="trash" modal="modal-delete-record" isDangerous={true}/>
+    `
+}

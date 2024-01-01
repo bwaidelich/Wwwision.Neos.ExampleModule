@@ -1,0 +1,81 @@
+Wwwision.Neos.ExampleModule.ExampleModuleController.index = NeosBE:Module {
+    translateContent = true
+    content = afx`
+        <Neos.Fusion.Form:Form attributes.class="filter" form.data.filter={Json.parse(Json.stringify(filter))} form.method="GET" form.target.action="index">
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="filter[state]" attributes.class="neos-span3 neos-select">
+                <Neos.Fusion.Form:Select attributes.onchange="this.form.submit()">
+                    <Neos.Fusion.Form:Select.Option option.value="" content="LLL:filter.state.all" />
+                    <Neos.Fusion.Form:Select.Option option.value="active" content="LLL:filter.state.active" />
+                    <Neos.Fusion.Form:Select.Option option.value="inactive" content="LLL:filter.state.inactive" />
+                </Neos.Fusion.Form:Select>
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="filter[searchTerm]" attributes.class="neos-span3">
+                <Neos.Fusion.Form:Input attributes.type="search" attributes.class="neos-span11" placeholder="LLL:filter.searchTerm" />
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+            <div class="filter-submit">
+                <NeosBE:Button isPrimary={true} content="LLL:filter.apply" />
+            </div>
+        </Neos.Fusion.Form:Form>
+
+        <p @if.hasNoRecords={records.empty}><i>
+            LLL:noRecordsMatchFilter
+        </i></p>
+        <Neos.Fusion:Fragment @if.hasRecords={!records.empty}>
+            <h2><NeosBE:Translate id="numberOfRecordsMatchFilter" quantity={records.numberOfResults} arguments={[records.numberOfResults]} /></h2>
+            <NeosBE:Table>
+                <NeosBE:Table.Head>
+                    <NeosBE:Table.Row>
+                        <NeosBE:Table.HeaderCell attributes.style="width: 1em"/>
+                        <NeosBE:Table.HeaderCell content="LLL:record.title"/>
+                        <NeosBE:Table.HeaderCell content="LLL:record.state"/>
+                        <NeosBE:Table.HeaderCell content="LLL:record.creationDate"/>
+                        <NeosBE:Table.HeaderCell/>
+                    </NeosBE:Table.Row>
+                </NeosBE:Table.Head>
+                <NeosBE:Table.Body>
+                    <Neos.Fusion:Loop items={records} itemName="record">
+                        <NeosBE:Table.ClickableRow target.action="showRecord" target.arguments={{id: record.id.value}}>
+                            <NeosBE:Table.Cell>
+                                <NeosBE:Icon icon="cube"/>
+                            </NeosBE:Table.Cell>
+                            <NeosBE:Table.Cell>
+                                {record.title.value}
+                            </NeosBE:Table.Cell>
+                            <NeosBE:Table.Cell>
+                                <Wwwision.Neos.ExampleModule:RecordStateBadge state={record.state}/>
+                            </NeosBE:Table.Cell>
+                            <NeosBE:Table.Cell>
+                                <Wwwision.Neos.ExampleModule:Timestamp dateTime={record.creationDate.dateTime}/>
+                            </NeosBE:Table.Cell>
+                            <NeosBE:Table.ActionCell>
+                                <NeosBE:Button icon="eye" action="showRecord" arguments={{id: record.id.value}}/>
+                            </NeosBE:Table.ActionCell>
+                        </NeosBE:Table.ClickableRow>
+                    </Neos.Fusion:Loop>
+                </NeosBE:Table.Body>
+            </NeosBE:Table>
+            <NeosBE:Pagination numberOfResults={records.numberOfResults} resultsPerPage={pagination.resultsPerPage} />
+        </Neos.Fusion:Fragment>
+
+        <NeosBE:ModalForm id="modal-add-record" header="LLL:addRecord" cancelButtonText="LLL:cancel" submitButtonIcon="plus" submitButtonText="LLL:addRecord" form.target.action="addRecord" form.data.form.state="active">
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="form[title]" label="LLL:record.title">
+                <Neos.Fusion.Form:Input attributes.class="neos-span12" attributes.required={true}/>
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="form[state]" label="LLL:record.state">
+                <Neos.Fusion.Form:Radio field.value="active"/>
+                &nbsp;&nbsp;
+                <Neos.Fusion.Form:Radio field.value="inactive"/>
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+        </NeosBE:ModalForm>
+        <NeosBE:ModalForm id="modal-delete-records" header="LLL:deleteAllRecords" cancelButtonText="LLL:cancel" submitButtonIcon="trash" submitButtonText="LLL:deleteAllRecords" isDangerous={true} form.target.action="deleteAllRecords">
+            LLL:confirm.deleteAllRecords
+            <br/>
+        </NeosBE:ModalForm>
+    `
+
+    footer = afx`
+        <NeosBE:Button content="LLL:seedRecords" icon="magic" action="seedRecords"/>
+        <NeosBE:Button content="LLL:addRecord" icon="plus" modal="modal-add-record" isPrimary={true}/>
+        <NeosBE:Button @if.hasRecords={!records.empty} content="LLL:deleteAllRecords" icon="trash" modal="modal-delete-records" isDangerous={true}/>
+    `
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Wwwision.Neos.ExampleModule" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="filter.state.all" xml:space="preserve">
+				<source>All states</source>
+			</trans-unit>
+            <trans-unit id="filter.state.active" xml:space="preserve">
+				<source>only active</source>
+			</trans-unit>
+            <trans-unit id="filter.state.inactive" xml:space="preserve">
+				<source>only inactive</source>
+			</trans-unit>
+            <trans-unit id="filter.searchTerm" xml:space="preserve">
+				<source>search term</source>
+			</trans-unit>
+            <trans-unit id="filter.apply" xml:space="preserve">
+				<source>Apply filter</source>
+			</trans-unit>
+            <trans-unit id="record.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+            <trans-unit id="record.state" xml:space="preserve">
+				<source>State</source>
+			</trans-unit>
+            <trans-unit id="record.state.active" xml:space="preserve">
+				<source>active</source>
+			</trans-unit>
+            <trans-unit id="record.state.inactive" xml:space="preserve">
+				<source>inactive</source>
+			</trans-unit>
+            <trans-unit id="record.creationDate" xml:space="preserve">
+				<source>Creation date</source>
+			</trans-unit>
+            <trans-unit id="confirm.deleteRecord" xml:space="preserve">
+				<source>Are you sure you want to remove record "{0}"?</source>
+			</trans-unit>
+            <trans-unit id="confirm.deleteAllRecords" xml:space="preserve">
+				<source>Are you sure you want to remove all records?</source>
+			</trans-unit>
+            <trans-unit id="seedRecords" xml:space="preserve">
+				<source>Create dummy records</source>
+			</trans-unit>
+            <trans-unit id="addRecord" xml:space="preserve">
+				<source>Add record</source>
+			</trans-unit>
+            <trans-unit id="deleteAllRecords" xml:space="preserve">
+				<source>Remove all records</source>
+			</trans-unit>
+            <trans-unit id="deleteRecord" xml:space="preserve">
+				<source>Remove record</source>
+			</trans-unit>
+            <trans-unit id="cancel" xml:space="preserve">
+				<source>Cancel</source>
+			</trans-unit>
+            <trans-unit id="details" xml:space="preserve">
+				<source>Details</source>
+			</trans-unit>
+            <trans-unit id="noRecordsMatchFilter" xml:space="preserve">
+				<source>No records match the filter criteria</source>
+			</trans-unit>
+            <group id="numberOfRecordsMatchFilter" restype="x-gettext-plurals">
+                <trans-unit id="numberOfRecordsMatchFilter[0]" xml:space="preserve">
+				    <source>One record matches the filter criteria</source>
+			    </trans-unit>
+                <trans-unit id="numberOfRecordsMatchFilter[1]" xml:space="preserve">
+				    <source>{0} records match the filter criteria</source>
+			    </trans-unit>
+            </group>
+            <trans-unit id="flashMessage.recordAdded" xml:space="preserve">
+				<source>Record was added successfully</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.dummyRecordsAdded" xml:space="preserve">
+				<source>Dummy records were added successfully</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordAlreadyDisabled" xml:space="preserve">
+				<source>This record is disabled already</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordDisabled" xml:space="preserve">
+				<source>Record was disabled successfully</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordAlreadyEnabled" xml:space="preserve">
+				<source>This record is enabled already</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordEnabled" xml:space="preserve">
+				<source>Record was enabled successfully</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordRenamed" xml:space="preserve">
+				<source>Record was renamed successfully</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordDeleted" xml:space="preserve">
+				<source>Record was removed</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.allRecordsDeleted" xml:space="preserve">
+				<source>All records were removed</source>
+			</trans-unit>
+            <trans-unit id="flashMessage.recordNotFound" xml:space="preserve">
+				<source>Failed to find record</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

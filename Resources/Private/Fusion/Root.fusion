@@ -1,0 +1,2 @@
+include: resource://Wwwision.Neos.ModuleComponents/Private/Fusion/Root.fusion
+include: **/*

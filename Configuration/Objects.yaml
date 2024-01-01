@@ -1,0 +1,9 @@
+'Wwwision\Neos\ExampleModule\RecordRepository':
+  arguments:
+    1:
+      object:
+        factoryObjectName: Neos\Flow\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: Wwwision_Neos_ExampleModule_Records
