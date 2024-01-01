@@ -22,7 +22,7 @@
     "require": {
         "php": ">=8.1",
         "neos/neos": "^7.3 || ^8.0",
-        "wwwision/neos-modulecomponents": "*"
+        "wwwision/neos-modulecomponents": "^1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
